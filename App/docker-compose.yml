@@ -1,0 +1,11 @@
+﻿services:
+  gluetun2qb:
+    image: gluetun2qb
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - GLUETUN_URL=${URL_WHERE_GLUETUN_RUNS}
+      - QB_URL=${QB_URL}
+      - QB_USER=${QB_USER_NAME}
+      - QB_PW=${QB_USER_PW}
