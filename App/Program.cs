@@ -15,10 +15,10 @@ try
     var client = new HttpClient();
     var qbClient = new QBittorrentClient(new Uri(qbUrl));
     qbClient.LoginAsync(qbUser, qbPw).Wait();
-    var qbPort = (await qbClient.GetPreferencesAsync()).ListenPort;
-    Console.WriteLine($"Current qBittorrent Port {qbPort}");
     while (true)
     {
+        var qbPort = (await qbClient.GetPreferencesAsync()).ListenPort;
+        Console.WriteLine($"Current qBittorrent Port {qbPort}");
         if (qbPort.HasValue)
         {
             var json = await client.GetStringAsync($"{gluetunUrl}/v1/openvpn/portforwarded");
